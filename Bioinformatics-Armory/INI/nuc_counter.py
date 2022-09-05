@@ -15,7 +15,7 @@ import argparse
 nuc_tup = ("A", "C", "G", "T")
 
 def parse_args():
-    parser = argparse.ArgumentParser(prog = 'INI.py', conflict_handler = 'resolve')
+    parser = argparse.ArgumentParser(prog = 'nuc_counter.py', conflict_handler = 'resolve')
     # parser.add_argument('-bl', type = str, required = True, help = '=> .txt with organism blacklist e.g. mm10')
     parser.add_argument('-seq', type = str, required = False, help = '=> DNA sequence string')
     parser.add_argument('-seqfile', type = str, required = False, help = '=> path/to/DNA sequence string file')
