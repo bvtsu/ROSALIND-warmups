@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 """ROSALIND Intro to bioinformatics armory
 
 This script takes a DNA sequence string and prints nucleotide counts.
@@ -10,9 +12,6 @@ The space-separated output contains four ints representing nucleotides A, C, G, 
 from Bio.Seq import Seq
 
 import argparse
-
-# Global, unchanging
-nuc_tup = ("A", "C", "G", "T")
 
 def parse_args():
     parser = argparse.ArgumentParser(prog = 'nuc_counter.py', conflict_handler = 'resolve')
@@ -34,22 +33,29 @@ def set_input(parsed_args) -> str:
     else:
         return(parsed_args.seq)
 
-def main():
-    """Prints counts of A, C, G, T nucleotides in a DNA sequence string"""
-
-    args = parse_args()
-    input_seq = set_input(args)
-    DNA_seq = Seq(input_seq)
-    if len(DNA_seq)-1 > 1000:
-        print("Size limit of 1000 exceeded. Exiting.")
-        return(None)
+def count_nucs(DNA_string: str) -> int:
+    nuc_tup = ("A", "C", "G", "T")
     count_str = ""
     for ind, nuc in enumerate(nuc_tup):
         if ind != len(nuc_tup)-1:
-            count_str += f"{DNA_seq.count(nuc)} "
+            count_str += f"{DNA_string.count(nuc)} "
         else:
-            count_str += f"{DNA_seq.count(nuc)}"
-    print(count_str)
+            count_str += f"{DNA_string.count(nuc)}"
+    return(count_str)
+
+def main():
+    # organize inputs from command line
+    args = parse_args()
+    input_seq = set_input(args)
+    DNA_seq = Seq(input_seq)
+    
+    # impose limits
+    if len(DNA_seq)-1 > 1000:
+        print("Size limit of 1000 exceeded. Exiting.")
+        return(None)
+
+    # print counts
+    print(count_nucs(DNA_seq))
 
 if __name__ == '__main__':
     main()
