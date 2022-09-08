@@ -18,10 +18,9 @@ import argparse
 
 def parse_args():
     parser = argparse.ArgumentParser(prog = 'gbk_counter.py', conflict_handler = 'resolve')
-    # parser.add_argument('-bl', type = str, required = True, help = '=> .txt with organism blacklist e.g. mm10')
     parser.add_argument('-db', type = str, required = True, help = '=> db type: choose "nucleotide" or "pubmed"')
     parser.add_argument('-email', type = str, required = True, help = '=> email for Entrez queries')
-    parser.add_argument('-genus', type = str, required = True, help = '=> email for Entrez queries')
+    parser.add_argument('-genus', type = str, required = True, help = '=> genus of interest')
     parser.add_argument('-start', type = str, required = True, help = '=> start date to look for pubs')
     parser.add_argument('-end', type = str, required = True, help = '=> end date to look for pubs')
     return(parser.parse_args())
